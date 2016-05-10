@@ -15,28 +15,27 @@ import time
 
 def main():
 
-	output = file('ClimateHound_Temp_Readings.txt','a')
-
 	sensor_pin = 'P9_40'
-
-	ADC.setup()
-
-	reading = ADC.rea(sensor_pin)
+	while True:
+		
+		ADC.setup()
 	
-	#millivolts reading
-	mv =reading * 1800
+		reading = ADC.rea(sensor_pin)
+		
+		#millivolts reading
+		mv =reading * 1800
+		
+		#Celsius reading
+		celsius = (mv - 500)/10
 	
-	#Celsius reading
-	celsius = (mv - 500)/10
-
-	#Fahrenheit reading
-	fahrenheit = (celsius * 9/5) + 32
-
-	now = time.strftime("%Y-%m-%d %H:%M")
-
-	output.write('{0} - The temperature is {1} degrees.').format(now, fahrenheit)
-
-	time.sleep(3600)
+		#Fahrenheit reading
+		fahrenheit = (celsius * 9/5) + 32
+	
+		now = time.strftime("%Y-%m-%d %H:%M")
+	
+		print '%s The temperature is %d degrees.' %  (now, fahrenheit)
+	
+		time.sleep(60)
 
 if __name__ == '__main__':
     main()
