@@ -16,10 +16,9 @@ import time
 def main():
 
 	sensor_pin = 'P9_40'
-	while True:
-		
-		ADC.setup()
+	ADC.setup()
 	
+	while True:
 		reading = ADC.rea(sensor_pin)
 		
 		#millivolts reading
