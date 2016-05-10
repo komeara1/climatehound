@@ -1,0 +1,52 @@
+
+ClimateHound Setup
+
+Citation: https://learn.adafruit.com/downloads/pdf/measuring-temperature-with-a-beaglebone-black.pdf
+
+Prerequisites:
+TMP36 sensor
+5V power supply
+Keyboard/mouse
+Breadboard (1/2 or Full)
+Male to Male jumpers
+Ensure GPIO is installed
+Python
+
+
+Steps:
+Connect your BeagleBone Black (BBB) to your keyboard/mouse, monitor, and power supply.
+
+BBB should boot and login automatically.
+
+Launch a Terminal from the Menu.
+
+Check to see if Python IO BBIO Library is installed.
+*On my BBB it was already installed.
+
+Type 'python' to enter interactive Python. Type 'import Adafruit_BBIO.ADC as ADC'. If you do not get an error, Python IO BBIO Library is already installed. 
+
+If you do get an error, go to https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black and follow the instructions from the specific OS (Angstrom or Debian/Ubuntu) that is installed on your BBB.
+*Debian was preinstalled on my BBB
+
+Wiring the BBB:
+See bbb_wiriing.tiff file in the directory for the solderless wiring setup from the BBB to the breadboard.
+
+The flat side of the TMP36 sensor should be facing the BBB.
+
+Blue wire connects from the GNDA_ADC to the GND pin of the TMP36 sensor -> the grounding connection
+
+Red wire connects from pin 3 (3.3V) to the positive supply pin of TMP36 -> the power connection
+
+Orange wire connects to P9.40 -> reads this the millivolts that is then convert to temperature (Fahrenheit or Celsius)
+
+For more granular detail of ADC and why the wires go where they go - https://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black/adc
+
+BBB pin reference - stuffwemade.net/hwio/beaglebone-pin-reference/
+
+Using Python to interact with the BBB-TMP36 configuration. See the climatehound.py file in the directory.
+
+Optional:
+Install ssmtp on the BBB to send you the output from climatehound.py.
+
+
+
